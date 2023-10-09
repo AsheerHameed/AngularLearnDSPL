@@ -1,12 +1,18 @@
 <h2>User List</h2>
-<ul>
-  <li *ngFor="let user of users">
-    <div>
-      <strong>Full Name:</strong> {{ user.fullName }}
-    </div>
-    <div>
-      <strong>Email:</strong> {{ user.email }}
-    </div>
-    <!-- Add more user details here -->
-  </li>
-</ul>
+
+<ng-container *ngFor="let user of users">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ user.fullName }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div>
+        <strong>Email:</strong> {{ user.email }}
+      </div>
+      <div>
+        <strong>Username:</strong> {{ user.username }}
+      </div>
+      <!-- Add more user details here -->
+    </mat-card-content>
+  </mat-card>
+</ng-container>
