@@ -1,0 +1,22 @@
+<h2>User Information</h2>
+
+<mat-card *ngIf="user">
+  <mat-card-header>
+    <mat-card-title>{{ user.fullName }}</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <strong>Email:</strong> {{ user.email }}
+    </div>
+    <div>
+      <strong>Username:</strong> {{ user.username }}
+    </div>
+    <div>
+      <strong>Date of Birth:</strong> {{ user.dob | date: 'mediumDate' }}
+    </div>
+    <div>
+      <strong>Gender:</strong> {{ user.gender }}
+    </div>
+    <!-- Add more user details here -->
+  </mat-card-content>
+</mat-card>

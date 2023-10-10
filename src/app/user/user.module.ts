@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select'; // Import MatSelectModule
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { UserInfoComponent } from './user-info/user-info.component';
  
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MatNativeDateModule } from '@angular/material/core';
     UserListComponent,
     UserEditComponent,
     UserComponent,
+    UserInfoComponent,
     
   ],
   imports: [

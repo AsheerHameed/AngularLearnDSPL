@@ -10,11 +10,12 @@ import { User } from '../user.model';
 })
 export class UserAddComponent {
   user: User = {
+    id:0,
     fullName: '',
     email: '',
     username: '',
     password: '',
-    dob: new Date(),
+    dob:'',
     gender: '',
   };
 
