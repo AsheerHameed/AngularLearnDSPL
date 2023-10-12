@@ -1,21 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
-import { User } from '../user.model';
+import { DataService } from '../user.service';
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'app-list-users',
   templateUrl: './user-list.component.html',
-  styleUrls: ['./user-list.component.scss']
+  styleUrls: ['./user-list.component.scss'],
 })
-export class UserListComponent {
-  users: User[] = [];
 
-  constructor(private userService: UserService, private router: Router) {
-    this.users = this.userService.getUsers();
+export class ListUsersComponent implements OnInit{
+  displayedColumns: string[] = ['firstName', 'lastName','address','dob','editButton',];
+
+  constructor(public dataService: DataService,
+    private router: Router  
+  ) {
+    
   }
-
-  navigateToUserDetails(userId: number) {
-    this.router.navigate(['/user', userId]);
+  ngOnInit(): void {
+    console.table(this.dataService.userData);
+  }
+  editUser(user: any) {
+    this.router.navigate(['/users/edit', user.id]);
+  }
+  seeUser(user:any){
+    this.router.navigate(['/users/user', user.id])
   }
 }

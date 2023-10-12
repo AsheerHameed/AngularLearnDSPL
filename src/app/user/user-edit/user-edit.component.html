@@ -1,1 +1,83 @@
-<p>user-edit works!</p>
+<div class="container">
+  <h1>Edit user</h1>
+  <form [formGroup]="userEditForm" (ngSubmit)="edit()">
+    <mat-card>
+      <mat-card-content>
+        <div class="input-group">
+          <div class="input-group-1">
+            <mat-form-field appearance="outline">
+              <mat-label>Enter your email</mat-label>
+              <input
+                matInput
+                type="email"
+                placeholder="user@gmail.com"
+                formControlName="email"            
+                required
+              />
+              <mat-error *ngIf="email.invalid">{{
+                getErrorMessage()
+              }}</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name </mat-label>
+              <input
+                matInput
+                placeholder="asheer"
+                formControlName="firstName"
+                required
+              />
+              <mat-error *ngIf="userFirstName && userFirstName.invalid"
+                >Enter a valid name</mat-error
+              >
+            </mat-form-field>
+          </div>
+          <div class="input-group-2">
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name </mat-label>
+              <input
+                matInput
+                placeholder="hameed"
+                formControlName="lastName"
+                required
+              />
+              <mat-error *ngIf="userLastName && userLastName.invalid"
+                >Enter a valid name</mat-error
+              >
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+              <mat-label>Address</mat-label>
+              <input
+                matInput
+                placeholder="Enter Address"
+                formControlName="address"
+                required
+              />
+            </mat-form-field>
+          </div>
+          <div class="input-group-3">
+            <mat-form-field>
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="dob" />
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle
+                matIconSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="userEditForm.invalid"
+        >
+          Update
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+</div>

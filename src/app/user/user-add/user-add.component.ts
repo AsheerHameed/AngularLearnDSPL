@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { UserService } from '../user.service';
-import { User } from '../user.model';
+import { DataService } from '../user.service';
 
 @Component({
   selector: 'app-user-add',
@@ -9,45 +10,54 @@ import { User } from '../user.model';
   styleUrls: ['./user-add.component.scss'],
 })
 export class UserAddComponent {
-  user: User = {
-    id:0,
-    fullName: '',
-    email: '',
-    username: '',
-    password: '',
-    dob:'',
-    gender: '',
-  };
+  constructor(
+    private formBuilder: FormBuilder,
+    private dataService: DataService,
+    private router: Router,
+    private snackBar: MatSnackBar
+  ) {}
 
-  constructor(private router: Router, private userService: UserService) {}
+  userForm = this.formBuilder.group({
+    id:[this.dataService.lastId],
+    email: [
+      '',
+      Validators.compose([Validators.email, Validators.required]),
+    ],
+    firstName: [''],
+    lastName: [''],
+    address: [''],
+    dob: [''],
+  });
 
-  onSubmit() {
-    // Check if the form is valid
-    if (this.isFormValid()) {
-      // Perform form submission logic here
-      // For demonstration purposes, we'll log the user object
-      console.log('User submitted:', this.user);
+  email = new FormControl('');
+  firstName = new FormControl('', [Validators.required]);
+  lastName = new FormControl('', [Validators.required]);
+  address = new FormControl('', [
+    Validators.required,
+    Validators.minLength(15),
+  ]);
 
-      // Add the user to your UserService or send the data to an API
-      this.userService.addUser(this.user);
-
-      // After a successful submission, navigate to the '/list' route
-      this.router.navigate(['/list']);
-    } else {
-      // Handle invalid form submission, e.g., display an error message
-      console.error('Form submission failed. Please fill in all required fields.');
-    }
+  get userFirstName() {
+    return this.userForm.get('firstName');
   }
-
-  // Custom method to check if the form is valid
-  isFormValid(): boolean {
-    // Implement your custom form validation logic here
-    // For simplicity, we'll check if the 'fullName', 'email', 'username', and 'password' fields are not empty
-    return (
-      this.user.fullName.trim() !== '' &&
-      this.user.email.trim() !== '' &&
-      this.user.username.trim() !== '' &&
-      this.user.password.trim() !== ''
-    );
+  get userLastName() {
+    return this.userForm.get('lastName');
+  }
+  get userAddress() {
+    return this.userForm.get('address');
+  }
+  getErrorMessage() {
+    if (this.email.hasError('required')) {
+      return 'You must enter a email';
+    }
+    return this.email.hasError('email') ? 'Not a valid email' : '';
+  }
+  submit() {
+    this.router.navigate(['/users']);
+    this.dataService.userData.push(this.userForm.value);
+    this.snackBar.open('User added', 'Close', {
+      duration: 3000,
+    });
+    this.dataService.lastId++
   }
 }

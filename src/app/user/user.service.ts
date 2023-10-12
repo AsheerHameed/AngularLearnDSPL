@@ -1,71 +1,64 @@
 import { Injectable } from '@angular/core';
-import { User } from './user.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class UserService {
-
-  private users: User[] = [
+export class DataService {
+  lastId :number = 6;
+  userData: any[] = [
     {
-      "id":1,
-      "fullName": "John Doe",
-      "email": "john@example.com",
-      "username": "johndoe",
-      "password": "Password1",
-      "dob": "1990-05-15",
-      "gender": "male"
+      id: 1,
+      email: 'john@example.com',
+      firstName: 'John',
+      lastName: 'doe',
+      address: 'Kolkata',
+      dob: 'Thu Oct 26 2023 10:45:00 GMT+0530 (India Standard Time)',
     },
     {
-      "id":2,
-      "fullName": "Alice Smith",
-      "email": "alice@example.com",
-      "username": "alicesmith",
-      "password": "Password2",
-      "dob": "1985-08-22",
-      "gender": "female"
+      id: 2,
+      email: 'alice@example.com',
+      firstName: 'Alice',
+      lastName: 'smith',
+      address:'Delhi',
+      dob: 'Fri Oct 27 2023 10:45:00 GMT+0530 (India Standard Time)',
     },
     {
-      "id":3,
-      "fullName": "Bob Johnson",
-      "email": "bob@example.com",
-      "username": "bobjohnson",
-      "password": "Password3",
-      "dob": "1988-12-10",
-      "gender": "male"
+      id: 3,
+      email: 'bob@example.com',
+      firstName: 'Bob',
+      lastName: 'Johnson',
+      address: 'Bangalore',
+      dob: 'Sat Oct 28 2023 10:45:00 GMT+0530 (India Standard Time)',
     },
     {
-      "id":4,
-      "fullName": "Eve Adams",
-      "email": "eve@example.com",
-      "username": "eveadams",
-      "password": "Password4",
-      "dob": "1995-03-25",
-      "gender": "female"
+      id: 4,
+      email: 'eve@example.com',
+      firstName: 'Eve',
+      lastName: ' Adams',
+      address: 'Mumbai',
+      dob: 'Sun Oct 29 2023 10:45:00 GMT+0530 (India Standard Time)',
     },
     {
-      "id":5,
-      "fullName": "Charlie Brown",
-      "email": "charlie@example.com",
-      "username": "charliebrown",
-      "password": "Password5",
-      "dob": "1982-07-05",
-      "gender": "male"
-    }
+      id: 5,
+      email: 'charlie@example.com',
+      firstName: 'Charlie',
+      lastName: 'brown',
+      address: 'Murdeshwar',
+      dob: 'Mon Oct 30 2023 10:45:00 GMT+0530 (India Standard Time)',
+    },
   ];
 
-  addUser(user: User) {
-    this.users.push(user);
+  addUser(user: any) {
+    this.userData.push(user);
   }
 
-  getUsers() {
-    return this.users;
+  updateUser(id: number, updatedUser: any) {
+    const index = this.userData.findIndex(user => user.id === id);
+    if (index !== -1) {
+      this.userData[index] = { ...this.userData[index], ...updatedUser };
+    }
   }
-
-  // New method to retrieve a user by their email or username
-  getUserById(id: string): User | undefined {
-    const idNumber = parseInt(id, 10); // Convert the id parameter to a number
-    return this.users.find(user => user.id === idNumber);
+  getUserById(id: number) {
+    return this.userData.find((user) => user.id === id);
   }
-  
 }

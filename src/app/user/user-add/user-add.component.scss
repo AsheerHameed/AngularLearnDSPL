@@ -1,28 +1,20 @@
-/* user-add.component.scss */
-
-/* Apply flexbox to center the form */
-.user-registration-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh; /* Make the container cover the entire viewport height */
-  }
-  
-  /* Style the card */
-  mat-card {
-    width: 50%; /* Adjust the width as needed */
-    padding: 20px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add a box shadow for a card effect */
-  }
-  
-  /* Style the form fields */
-  mat-form-field {
-    width: 100%;
-    margin-bottom: 15px;
-  }
-  
-  /* Center the button */
-  button {
-    align-self: center;
-  }
-  
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.container h1{
+padding-top: 40px;
+}
+mat-form-field{
+  width: 100%;
+}
+mat-card{
+  padding: 15px;
+}
+mat-card-actions{
+display: flex;
+justify-content: center;
+align-items: center;
+}

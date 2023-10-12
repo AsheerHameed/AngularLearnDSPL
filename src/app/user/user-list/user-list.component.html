@@ -1,16 +1,45 @@
-<ng-container *ngFor="let user of users">
-  <mat-card (click)="navigateToUserDetails(user.id)">
-    <mat-card-header>
-      <mat-card-title>{{ user.fullName }}</mat-card-title>
-    </mat-card-header>
-    <mat-card-content>
-      <div>
-        <strong>Email:</strong> {{ user.email }}
-      </div>
-      <div>
-        <strong>Username:</strong> {{ user.username }}
-      </div>
-      <!-- Add more user details here -->
-    </mat-card-content>
-  </mat-card>
-</ng-container>
+<div class="demo-button-container">
+  <button mat-raised-button routerLink="/users/add" class="demo-button">
+    Add data
+  </button>
+</div>
+<table mat-table [dataSource]="dataService.userData" class="mat-elevation-z8">
+  <ng-container matColumnDef="firstName">
+    <th mat-header-cell *matHeaderCellDef>First name</th>
+    <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="lastName">
+    <th mat-header-cell *matHeaderCellDef>Last name</th>
+    <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+  </ng-container>
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef>Address</th>
+    <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+  </ng-container>
+  <ng-container matColumnDef="dob">
+    <th mat-header-cell *matHeaderCellDef>DOB</th>
+    <td mat-cell *matCellDef="let element">{{ element.dob }}</td>
+  </ng-container>
+  <ng-container matColumnDef="formC">
+    <th mat-header-cell *matHeaderCellDef>Form Controls</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="editButton" class="formControls">
+    <th mat-header-cell *matHeaderCellDef>Controls</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button (click)="editUser(element)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button  (click)="seeUser(element)">
+        <mat-icon>visibility</mat-icon>
+      </button>
+      
+    </td>
+  </ng-container>
+  
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

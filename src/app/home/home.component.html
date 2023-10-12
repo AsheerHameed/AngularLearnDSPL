@@ -1,0 +1,13 @@
+<div class="container">
+  <button mat-button routerLink="/users/add">Add User</button>
+  <button mat-button routerLink="/users">See user</button>
+
+  <button mat-button [matMenuTriggerFor]="beforeMenu">Options</button>
+  <mat-menu #beforeMenu="matMenu" xPosition="before">
+    <button mat-menu-item routerLink="/users/add">Add User</button>
+    <button mat-menu-item routerLink="/users">See user</button>
+  </mat-menu>
+</div>
+<div>
+  <app-list-users></app-list-users>
+</div>
