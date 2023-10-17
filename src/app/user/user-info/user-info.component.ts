@@ -17,8 +17,8 @@ export class UserInfoComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      this.userId = +params['id']; // Extract the user ID from the route parameters
-      this.user = this.dataService.getUserById(this.userId); // Fetch user data by ID
+      this.userId = +params['id'];
+      this.user = this.dataService.getUserById(this.userId);
     });
   }
 }

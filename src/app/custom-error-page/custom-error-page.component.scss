@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@700&family=Pixelify+Sans&display=swap");
+
+.error-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.error-page img {
+  width: 125px;
+  height: 125px;
+  margin: 25px;
+}
+.error-page_text {
+  display: flex;
+  align-items: center;
+}
+h1 {
+  font-family: "Pixelify Sans", sans-serif;
+  font-size: 48px;
+  line-height: 55px;
+}
+.error-page_btn input {
+  background: black;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+}

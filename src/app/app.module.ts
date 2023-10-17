@@ -4,10 +4,12 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import { UserRoutingModule } from './user/user-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CustomErrorPageComponent } from './custom-error-page/custom-error-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    CustomErrorPageComponent,
   ],
   imports: [
     BrowserModule,

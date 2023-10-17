@@ -29,7 +29,7 @@ export class UserAddComponent {
     dob: [''],
   });
 
-  email = new FormControl('');
+  email = new FormControl('',[Validators.required]);
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
   address = new FormControl('', [

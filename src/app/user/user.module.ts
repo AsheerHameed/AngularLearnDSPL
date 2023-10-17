@@ -35,7 +35,7 @@ import { HomeComponent } from '../home/home.component';
     AppRoutingModule,
     FormsModule,
     MatButtonModule,
-    MatCardModule, // Add MatCardModule to the imports array
+    MatCardModule,
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
