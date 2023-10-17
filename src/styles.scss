@@ -1,4 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 12px; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 12px;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// .mat-mdc-text-field-wrapper:not(.mdc-text-field--outlined)
+//   .mat-mdc-form-field-infix,
+// .mat-mdc-icon-button,
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   background-color: white;
+// }

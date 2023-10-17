@@ -18,18 +18,15 @@ export class UserAddComponent {
   ) {}
 
   userForm = this.formBuilder.group({
-    id:[this.dataService.lastId],
-    email: [
-      '',
-      Validators.compose([Validators.email, Validators.required]),
-    ],
+    id: [this.dataService.lastId],
+    email: ['', Validators.compose([Validators.email, Validators.required])],
     firstName: [''],
     lastName: [''],
     address: [''],
     dob: [''],
   });
 
-  email = new FormControl('',[Validators.required]);
+  email = new FormControl('', [Validators.required]);
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
   address = new FormControl('', [
@@ -58,6 +55,7 @@ export class UserAddComponent {
     this.snackBar.open('User added', 'Close', {
       duration: 3000,
     });
-    this.dataService.lastId++
+    this.dataService.lastId++;
+    // this.userForm.reset();
   }
 }
