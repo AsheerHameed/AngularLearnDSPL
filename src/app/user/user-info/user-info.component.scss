@@ -3,7 +3,7 @@ mat-card-header {
   justify-content: center;
   padding: 20px;
 }
-.container {
+.container{
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,5 +11,11 @@ mat-card-header {
 
 mat-card {
   margin: 20px;
-  border: 1px solid black;
+  padding: 20px;
+  border-radius:12px ;
 }
+.content{
+  display: flex;
+}
+.content img{
+width: 220px;}
