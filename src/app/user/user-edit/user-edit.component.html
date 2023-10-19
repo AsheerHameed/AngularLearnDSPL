@@ -56,14 +56,16 @@
           </div>
           <div class="input-group-3">
             <mat-form-field>
-              <mat-label>Enter Date of birth</mat-label>
-              <input matInput [matDatepicker]="picker" formControlName="dob" />
-              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-label>Choose a date</mat-label>
+              <input matInput [matDatepicker]="picker" [min]="minDate" [max]="maxDate" formControlName="dob" />
               <mat-datepicker-toggle
                 matIconSuffix
                 [for]="picker"
               ></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="userEditForm.get('dob')?.hasError('required')">
+                This field is required
+              </mat-error>
             </mat-form-field>
           </div>
         </div>
@@ -77,6 +79,14 @@
         >
           Update
         </button>
+        <button
+        type="button"
+        mat-raised-button
+        color="flat"
+        (click)="resetForm()"
+      >
+        Reset
+      </button>
       </mat-card-actions>
     </mat-card>
   </form>

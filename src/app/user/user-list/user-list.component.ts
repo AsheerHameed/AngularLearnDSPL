@@ -17,7 +17,6 @@ export class ListUsersComponent implements OnInit{
     
   }
   ngOnInit(): void {
-    console.table(this.dataService.userData);
   }
   editUser(user: any) {
     this.router.navigate(['/users/edit', user.id]);

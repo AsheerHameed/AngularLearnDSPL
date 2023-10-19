@@ -4,6 +4,7 @@ import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { ListUsersComponent } from './user-list/user-list.component';
 import { UserInfoComponent } from './user-info/user-info.component';
+import { CustomErrorPageComponent } from '../custom-error-page/custom-error-page.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,10 @@ const routes: Routes = [
       {
         path: 'user/:id',
         component: UserInfoComponent,
+      },
+      {
+        path: 'users/**',
+        component: CustomErrorPageComponent,
       },
     ],
   },

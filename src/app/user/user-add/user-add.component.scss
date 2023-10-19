@@ -1,21 +1,23 @@
-.container{
+.container {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.container h1{
-padding-top: 40px;
+.container h1 {
+  padding-top: 40px;
 }
-mat-form-field{
+mat-form-field {
   width: 100%;
-
 }
-mat-card{
+mat-card {
   padding: 15px;
 }
-mat-card-actions{
-display: flex;
-justify-content: center;
-align-items: center;
+mat-card-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+mat-card-actions button {
+  margin-left: 12px;
 }

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { userDataType } from './userDataType';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +13,7 @@ export class DataService {
       firstName: 'John',
       lastName: 'doe',
       address: 'Kolkata',
-      dob: 'Thu Oct 26 2023 10:45:00 GMT+0530 (India Standard Time)',
+      dob:  '12/10/2023'
     },
     {
       id: 2,
@@ -20,7 +21,7 @@ export class DataService {
       firstName: 'Alice',
       lastName: 'smith',
       address:'Delhi',
-      dob: 'Fri Oct 27 2023 10:45:00 GMT+0530 (India Standard Time)',
+      dob: '12/10/2023'
     },
     {
       id: 3,
@@ -28,7 +29,7 @@ export class DataService {
       firstName: 'Bob',
       lastName: 'Johnson',
       address: 'Bangalore',
-      dob: 'Sat Oct 28 2023 10:45:00 GMT+0530 (India Standard Time)',
+      dob: '12/10/2023'
     },
     {
       id: 4,
@@ -36,7 +37,7 @@ export class DataService {
       firstName: 'Eve',
       lastName: ' Adams',
       address: 'Mumbai',
-      dob: 'Sun Oct 29 2023 10:45:00 GMT+0530 (India Standard Time)',
+      dob: '12/10/2023'
     },
     {
       id: 5,
@@ -44,7 +45,7 @@ export class DataService {
       firstName: 'Charlie',
       lastName: 'brown',
       address: 'Murdeshwar',
-      dob: 'Mon Oct 30 2023 10:45:00 GMT+0530 (India Standard Time)',
+      dob:'12/10/2023'
     },
   ];
 
@@ -58,7 +59,8 @@ export class DataService {
       this.userData[index] = { ...this.userData[index], ...updatedUser };
     }
   }
-  getUserById(id: number) {
+  getUserById(id: number): userDataType | undefined {
     return this.userData.find((user) => user.id === id);
-  }
+
+}
 }

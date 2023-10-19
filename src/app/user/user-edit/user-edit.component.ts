@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DataService } from '../user.service';
@@ -13,8 +9,9 @@ import { DataService } from '../user.service';
   styleUrls: ['./user-edit.component.scss'],
 })
 export class UserEditComponent implements OnInit {
+  minDate: Date | undefined;
+  maxDate: Date | undefined;
   userId: number | undefined;
-
   constructor(
     private formBuilder: FormBuilder,
     private dataService: DataService,
@@ -23,29 +20,38 @@ export class UserEditComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
   ngOnInit(): void {
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date(currentYear - 20, 0, 1);
+    this.maxDate = new Date();
+
     this.route.params.subscribe((params) => {
-      this.userId = +params['id']; // Set the userId based on the route parameter
+      this.userId = +params['id'];
       const user = this.dataService.getUserById(this.userId);
       this.userEditForm.patchValue({
-        id: user.id,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-        address: user.address,
-        dob: user.dob,
+        id: user?.id,
+        email: user?.email,
+        firstName: user?.firstName,
+        lastName: user?.lastName,
+        address: user?.address,
+        dob: this.userEditForm.value.dob,
       });
     });
   }
+
+  
   userEditForm = this.formBuilder.group({
-    id: [''],
-    email: ['', ],
+    id: [0],
+    email: [''],
     firstName: [''],
     lastName: [''],
     address: [''],
-    dob: [''],
+    dob: [new Date(), ''],
   });
 
-  email = new FormControl('',Validators.compose([Validators.required,Validators.email]));
+  email = new FormControl(
+    '',
+    Validators.compose([Validators.required, Validators.email])
+  );
   firstName = new FormControl('', [Validators.required]);
   lastName = new FormControl('', [Validators.required]);
   address = new FormControl('', [
@@ -68,9 +74,25 @@ export class UserEditComponent implements OnInit {
     }
     return this.email.hasError('email') ? 'Not a valid email' : '';
   }
+
+  formatDate(inputDate: any): string {
+    const date = new Date(inputDate);
+    if (isNaN(date.getTime())) {
+      return 'Invalid Date';
+    }
+
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Months are 0-based, so add 1
+    const year = date.getFullYear();
+
+    return `${day}/${month}/${year}`;
+  }
+  resetForm(){
+    this.userEditForm.reset();
+  }
   edit() {
-    const id = this.dataService.lastId;
-    console.log(id);
+    this.userEditForm.value.dob = this.formatDate(this.userEditForm.value.dob);
+
     this.router.navigate(['/users']);
     if (this.userId !== undefined) {
       this.dataService.updateUser(this.userId, this.userEditForm.value);
