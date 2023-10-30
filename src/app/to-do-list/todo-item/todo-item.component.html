@@ -1,0 +1,9 @@
+<div class="container">
+    <ul>
+      <li *ngFor="let task of toDoList">
+        {{ task }} -
+        <input type="button" value="completed" (click)="completedTask(task)" />
+      </li>
+    </ul>
+  </div>
+  

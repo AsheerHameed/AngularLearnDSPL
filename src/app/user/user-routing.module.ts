@@ -5,6 +5,7 @@ import { UserEditComponent } from './user-edit/user-edit.component';
 import { ListUsersComponent } from './user-list/user-list.component';
 import { UserInfoComponent } from './user-info/user-info.component';
 import { CustomErrorPageComponent } from '../custom-error-page/custom-error-page.component';
+import { TodoListComponent } from '../to-do-list/todo-list/todo-list.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
         component: CustomErrorPageComponent,
       },
     ],
+  },
+  {
+    path: 'to-do',
+    component: TodoListComponent,
   },
 ];
 
