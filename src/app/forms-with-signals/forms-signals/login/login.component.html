@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="right_side_text">
+    <h2>  Contact Form:
+    </h2>
+  </div>
+
+  <form [formGroup]="contactForm" (keyup.enter)="onSubmit()" (ngSubmit)="onSubmit()">
+    <div class="group">
+      <label for="username">Name</label>
+      <div class="user_group">
+        <img src="assets/user.png" width="18px" height="20px">
+        <input id="name" type="text" placeholder="Enter your username" formControlName="contactName">
+      </div>
+    </div>
+
+    <div class="group">
+      <label for="pwd">Email</label>
+      <div class="password_group">
+        <img src="assets/email.png" alt="" width="18px" height="20px">
+        <input id="email" type="email" placeholder="Enter your email" formControlName="contactEmail">
+      </div>
+    </div>
+
+    <div class="group">
+      <label for="pwd">Subject</label>
+      <div class="password_group">
+        <img src="assets/email.png" alt="" width="18px" height="20px">
+        <input id="subject" type="text" placeholder="Enter your subject" formControlName="subject">
+      </div>
+    </div>
+
+      <label for="message">Message</label>
+      <div class="password_group">
+        <textarea name="message" id="" style="width: 100%;;padding: 10px;" formControlName="message" placeholder="Enter your message"  cols="30" rows="6"></textarea>
+      </div>
+
+    <button type="submit" >Send 🚀</button>
+  </form>
+</div>

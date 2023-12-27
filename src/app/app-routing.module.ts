@@ -4,11 +4,10 @@ import { HomeComponent } from './home/home.component';
 import { CustomErrorPageComponent } from './custom-error-page/custom-error-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  {
-    path: '**',
-    component: CustomErrorPageComponent,
-  },
+  // {
+  //   path: '**',
+  //   component: CustomErrorPageComponent,
+  // },
 ];
 
 @NgModule({

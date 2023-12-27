@@ -1,0 +1,53 @@
+<div class="container">
+
+  <div class="right_side">
+
+    <div class="signUpForm" *ngIf="!showLogin">
+      <div class="right_side_text">
+        <h2>Sign Up</h2>
+        <p>
+          Already have an account?
+          <a> Login here</a>
+        </p>
+      </div>
+      <form [formGroup]="userSignUpForm" (keyup.enter)="onSubmit()" (ngSubmit)="onSubmit()">
+
+        <div class="group">
+          <label for="email">Email</label>
+          <div class="email_group">
+            <img src="assets/email.png" width="18px" height="20px">
+            <input id="email" [value]="email()"  type="email" placeholder="Enter your email address" formControlName="email">
+          </div>
+        </div>
+
+        <div class="group">
+          <label for="username">Username</label>
+          <div class="user_group">
+            <img src="assets/user.png" width="18px" height="20px">
+            <input id="username" [value]="username()" type="text" placeholder="Enter your username" formControlName="username">
+          </div>
+        </div>
+
+        <div class="group">
+          <label for="pwd">Password </label>
+          <div class="password_group">
+            <img src="assets/unlock.png" alt="" width="18px" height="20px">
+            <input id="pwd" [value]="password()" type="password" placeholder="Enter your password" formControlName="password">
+          </div>
+        </div>
+
+        <div class="group">
+          <label for="cnfPwd">Confirm password </label>
+          <div class="password_group">
+            <img src="assets/unlock.png" width="18px" height="20px">
+            <input id="cnfPwd" [value]="confirmPassword" type="password" placeholder="Confirm your password" formControlName="confirmPassword">
+          </div>
+        </div>
+
+        <button type="submit" >SIGN UP</button>
+      </form>
+    </div>
+
+
+  </div>
+</div>

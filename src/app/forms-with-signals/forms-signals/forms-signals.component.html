@@ -1,0 +1,12 @@
+<router-outlet></router-outlet>
+<div class="cta">
+  <button type="button" (click)="detectComponent('Signup')">Sign up Form</button>
+  <button type="button" (click)="detectComponent('Login')">Login Form</button>
+  <button type="button" (click)="detectComponent('Info')">Show values</button>
+</div>
+<div class="container">
+  <div class="left_side">
+    <img src="assets/onboarding.png" alt="" />
+  </div>
+    <ng-container *ngComponentOutlet="component"></ng-container>
+</div>

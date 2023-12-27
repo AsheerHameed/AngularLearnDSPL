@@ -6,6 +6,9 @@ import { UserRoutingModule } from './user/user-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomErrorPageComponent } from './custom-error-page/custom-error-page.component';
 import { ToDoListModule } from './to-do-list/to-do-list.module';
+import { PocModule } from './poc/poc.module';
+import { FormsSignalsModule } from './forms-with-signals/forms-signals/forms-signals.module';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, CustomErrorPageComponent],
@@ -14,7 +17,10 @@ import { ToDoListModule } from './to-do-list/to-do-list.module';
     UserRoutingModule,
     UserModule,
     BrowserAnimationsModule,
-    ToDoListModule
+    ToDoListModule,
+    PocModule,
+    FormsModule,
+    FormsSignalsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
